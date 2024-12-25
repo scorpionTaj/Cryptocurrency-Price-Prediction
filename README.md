@@ -7,7 +7,7 @@ Welcome to the Cryptocurrency Price Prediction App! This application allows you 
 - **Current Prices**: Check the current prices of cryptocurrencies in both USD and MAD.
 - **Historical Data**: Visualize historical price trends for the past 30 to 365 days.
 - **Price Prediction**: Predict future prices for up to 365 days using a linear regression model.
-- **Data Export**: Export historical and predicted price data as a CSV file.
+- **Data Export**: Export historical and predicted price data as a CSV nad PDF file.
 
 ## Getting Started
 
@@ -22,6 +22,7 @@ Welcome to the Cryptocurrency Price Prediction App! This application allows you 
 - Pycoingecko
 - Altair
 - [Exchange API](https://github.com/fawazahmed0/exchange-api)
+- reportlab
 
 ### Installation
 

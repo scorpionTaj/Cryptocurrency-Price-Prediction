@@ -8,7 +8,9 @@ from pycoingecko import CoinGeckoAPI
 import streamlit as st
 from crypto_symbols import symbol_to_id
 import altair as alt
-
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
+from reportlab.lib import colors
 
 cg = CoinGeckoAPI()
 
@@ -208,6 +210,26 @@ else:
             combined_df = pd.concat([historical_df, predicted_df], keys=['Historical', 'Predicted'])
             combined_df.to_csv('crypto_prices.csv')
             st.success('Data exported successfully! File saved as crypto_prices.csv')
+
+        elif st.button('Export Data as PDF'):
+            combined_df = pd.concat([historical_df, predicted_df], keys=['Historical', 'Predicted'])
+            table_data = [combined_df.columns.tolist()] + combined_df.values.tolist()
+            pdf_file = 'crypto_prices.pdf'
+            pdf = SimpleDocTemplate(pdf_file, pagesize=letter)
+            table = Table(table_data)
+            table.setStyle(TableStyle([
+                ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
+                ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+                ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+                ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+                ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+                ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
+                ('GRID', (0, 0), (-1, -1), 1, colors.black),
+            ]))
+            elements = [table]
+            pdf.build(elements)
+            st.success('Data exported successfully! File saved as crypto_prices.pdf')
+
 
     except Exception as e:
         st.error(f"An error occurred: {e}")
