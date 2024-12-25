@@ -28,7 +28,7 @@ Welcome to the Cryptocurrency Price Prediction App! This application allows you 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/scorpionTaj/cryptocurrency-price-prediction.git
+   git clone https://github.com/scorpionTaj/Cryptocurrency-Price-Prediction.git
    cd cryptocurrency-price-prediction
    ```
 
