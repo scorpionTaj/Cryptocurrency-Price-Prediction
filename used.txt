@@ -1,0 +1,8 @@
+Exchange API (https://github.com/fawazahmed0/exchange-api)
+Crypto Compare
+CoinGeckoAPI
+Scikit-learn(LinearRegression-MinMaxScaler)
+numpy
+pandas
+requests
+streamlit
