@@ -9,6 +9,10 @@ Welcome to the Cryptocurrency Price Prediction App! This application allows you 
 - **Price Prediction**: Predict future prices for up to 365 days using a linear regression model.
 - **Data Export**: Export historical and predicted price data as a CSV nad PDF file.
 
+## ScreenShots
+
+![Main App Preview](image.png)
+
 ## Getting Started
 
 ### Prerequisites
