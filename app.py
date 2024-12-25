@@ -209,6 +209,13 @@ else:
         if st.button('Export Data as CSV'):
             combined_df = pd.concat([historical_df, predicted_df], keys=['Historical', 'Predicted'])
             combined_df.to_csv('crypto_prices.csv')
+            csv_data = combined_df.to_csv(index=False)
+            st.download_button(
+                label="Download CSV",
+                data=csv_data,
+                file_name="crypto_prices.csv",
+                mime="text/csv"
+            )
             st.success('Data exported successfully! File saved as crypto_prices.csv')
 
         elif st.button('Export Data as PDF'):
@@ -226,8 +233,16 @@ else:
                 ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
                 ('GRID', (0, 0), (-1, -1), 1, colors.black),
             ]))
-            elements = [table]
-            pdf.build(elements)
+            pdf.build([table])
+            # Provide a download button for PDF
+            with open(pdf_file, "rb") as f:
+                pdf_data = f.read()
+            st.download_button(
+                label="Download PDF",
+                data=pdf_data,
+                file_name="crypto_prices.pdf",
+                mime="application/pdf"
+    )
             st.success('Data exported successfully! File saved as crypto_prices.pdf')
 
 
