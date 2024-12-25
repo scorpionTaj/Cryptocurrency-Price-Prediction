@@ -1,3 +1,4 @@
+from io import BytesIO
 import requests
 import pandas as pd
 import numpy as np
@@ -208,7 +209,6 @@ else:
         # Add a button to export data as CSV
         if st.button('Export Data as CSV'):
             combined_df = pd.concat([historical_df, predicted_df], keys=['Historical', 'Predicted'])
-            combined_df.to_csv('crypto_prices.csv')
             csv_data = combined_df.to_csv(index=False)
             st.download_button(
                 label="Download CSV",
@@ -221,8 +221,8 @@ else:
         elif st.button('Export Data as PDF'):
             combined_df = pd.concat([historical_df, predicted_df], keys=['Historical', 'Predicted'])
             table_data = [combined_df.columns.tolist()] + combined_df.values.tolist()
-            pdf_file = 'crypto_prices.pdf'
-            pdf = SimpleDocTemplate(pdf_file, pagesize=letter)
+            pdf_buffer = BytesIO()
+            pdf = SimpleDocTemplate(pdf_buffer, pagesize=letter)
             table = Table(table_data)
             table.setStyle(TableStyle([
                 ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
@@ -235,11 +235,10 @@ else:
             ]))
             pdf.build([table])
             # Provide a download button for PDF
-            with open(pdf_file, "rb") as f:
-                pdf_data = f.read()
+            pdf_buffer.seek(0)
             st.download_button(
                 label="Download PDF",
-                data=pdf_data,
+                data=pdf_buffer,
                 file_name="crypto_prices.pdf",
                 mime="application/pdf"
     )

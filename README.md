@@ -6,8 +6,8 @@ Welcome to the Cryptocurrency Price Prediction App! This application allows you 
 
 - **Current Prices**: Check the current prices of cryptocurrencies in both USD and MAD.
 - **Historical Data**: Visualize historical price trends for the past 30 to 365 days.
-- **Price Prediction**: Predict future prices for up to 365 days using a linear regression model.
-- **Data Export**: Export historical and predicted price data as a CSV nad PDF file.
+- **Data Export**: Export historical and predicted price data as a CSV and PDF file.
+- **Download Option**: Download the historical and predicted price data directly from the app.
 
 ## Live Demo
 
